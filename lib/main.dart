@@ -36,18 +36,6 @@ class MyHomePage extends StatelessWidget {
 
   //Recipe recipe = Recipe('recipe label', 'image pathURL');
 
-  List<Recipe> recipes = <Recipe>[
-    Recipe('recipe number 1', 'assets/bagandbook.jpeg'),
-    Recipe('recipe number 2', 'assets/bagandbook.jpeg'),
-    Recipe('recipe number 3', 'assets/bagandbook.jpeg'),
-    Recipe('recipe number 4', 'assets/bagandbook.jpeg'),
-    Recipe('recipe number 5', 'assets/bagandbook.jpeg'),
-    Recipe('recipe number 6', 'assets/bagandbook.jpeg'),
-    Recipe('recipe number 7', 'assets/bagandbook.jpeg'),
-    Recipe('recipe number 8', 'assets/bagandbook.jpeg'),
-    Recipe('recipe number 9', 'assets/bagandbook.jpeg'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +49,7 @@ class MyHomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   //TODO 디테일페이지 전환
-                  return RecipeDetail();
+                  return RecipeDetail(recipe: recipes[index]);
                 }));
               },
               child: buildRecipedCard(recipes[index]));
@@ -79,12 +67,12 @@ class MyHomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Image.asset(recipe.imageUrl!),
+            Image.asset(recipe.imageUrl),
             const SizedBox(
               height: 10,
             ),
             Text(
-              recipe.label!,
+              recipe.label,
               style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w700,
